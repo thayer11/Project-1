@@ -12,4 +12,9 @@
 	padding-bottom: 20px;
 }
 
+#grid-row1,#grid-row2,#grid-row3{
+	background-color: ivory;
+	text-align: center;
+}
+
 
