@@ -29,42 +29,38 @@ window.onload=function() {
      cardarray[17] = new Card("images/unnamed.png","images/imgres.jpg","r",17); 
 
 
-    //Function Load Page 
-
     function TurnCard(event){
-            var img = document.createElement("img");
+            console.log(stateMemory);
             var clickedDiv = event.target;
             var clickedCard = cardarray[(clickedDiv).getAttribute("data-id")];
-            console.log(clickedDiv);
-            img.setAttribute("height", "175px");
-            img.setAttribute("width", "175px");
-            img.setAttribute("src", clickedCard.side2);
-            clickedDiv.appendChild(img);
+            clickedDiv.style.backgroundImage = "url('" + clickedCard.side2+"')";
             if (stateMemory===""){
                 stateMemory=clickedCard;
             }else {
-                Match(stateMemory, clickedCard);}//Constructor:
-    }//Objects=EachCard which exists in an array
-    //properties:
-    //sideOne: image
-    //sideTwo: color
-    //sideNothing:" "
+                Match(stateMemory, clickedCard);
+                stateMemory="";     
+            }
+
+    }
     for (var i = 0; i < cardarray.length; i++){ 
     	   document.getElementById(cardarray[i].id).addEventListener("click", function(event){
            TurnCard(event);
         });
     }
+    
     function Match(firstCard, secondCard){
-            if (firstCard.side2!=secondCard.side2){
+            if (firstCard.side2!==secondCard.side2){
                 TurnBack(firstCard, secondCard);
             }
-            firstCard="";
+           
     }
 
     function TurnBack(firstCard, secondCard){
             var CardDiv = document.getElementById(firstCard.id);
-            var img = CardDiv.childNodes[0];
-            img.setAttribute("src", firstCard.side1);
+            CardDiv.style.backgroundImage = "url('" + firstCard.side1+"')";
+            CardDiv = document.getElementById(secondCard.id);
+            CardDiv.style.backgroundImage = "url('" + secondCard.side1+"')";
+            
     }
 }
 
