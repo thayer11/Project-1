@@ -50,28 +50,25 @@ window.onload=function() {
     
     function Match(firstCard, secondCard){
             if (firstCard.side2!==secondCard.side2){
-                TurnBack(firstCard, secondCard);
+                TurnBack(firstCard);
+                TurnBack(secondCard);
             }
            
     }
 
-    function TurnBack(firstCard, secondCard){
+    function TurnBack(firstCard){
+        console.log(firstCard);
             var CardDiv = document.getElementById(firstCard.id);
             CardDiv.style.backgroundImage = "url('" + firstCard.side1+"')";
-            CardDiv = document.getElementById(secondCard.id);
-            CardDiv.style.backgroundImage = "url('" + secondCard.side1+"')";
             
     }
-}
 
-    function TurnBack(firstCard, secondCard){
-            var CardDiv = document.getElementById(secondCard.id);
-            var img = CardDiv.childNodes[1];
-            img.setAttribute("src", secondCard.side1);
-    }
-
-
-        
+document.getElementById("startover").addEventListener("click", function(){
+   for(var i=0; i<cardarray.length; i++){
+        TurnBack(cardarray[i]);
+   } 
+});
+}    
     
 
     //  Turn.prototype = {
