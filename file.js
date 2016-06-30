@@ -1,27 +1,33 @@
 window.onload=function() {
  
- function Card(side1, side2) {
+ function Card(side1, side2, a, b) {
     this.side1 = side1;
     this.side2 = side2;
+    this.id = a;
+    this.dataid = b;
  }
- var card1 = new card("ivory","image");
- var card1 = new card("ivory","image");
- var card1 = new card("ivory","image");
- var card1 = new card("ivory","image");
- var card1 = new card("ivory","image");
- var card1 = new card("ivory","image");
- var card1 = new card("ivory","image");
- var card1 = new card("ivory","image");
- var card1 = new card("ivory","image");
- var card1 = new card("ivory","image");
- var card1 = new card("ivory","image");
- var card1 = new card("ivory","image");
- var card1 = new card("ivory","image");
- var card1 = new card("ivory","image");
- var card1 = new card("ivory","image");
- var card1 = new card("ivory","image");
- var card1 = new card("ivory","image");
- var card1 = new card("ivory","image");
+ var cardarray = [];
+
+ cardarray[0] = new Card("ivory","images/images-1.jpg","a",0);
+ cardarray[1] = new Card("ivory","images/images-1.jpg","b",1);
+ cardarray[2] = new Card("ivory","images/images-2.jpg","c",2);
+ cardarray[3] = new Card("ivory","images/images-2.jpg","d",3);
+ cardarray[4] = new Card("ivory","images/images-3.jpg","e",4);
+ cardarray[5] = new Card("ivory","images/images-3.jpg","f",5);
+ cardarray[6] = new Card("ivory","images/images-4.jpg","g",6);
+ cardarray[7] = new Card("ivory","images/images-4.jpg","h",7);
+ cardarray[8] = new Card("ivory","images/images-5.jpg","i",8);
+ cardarray[9] = new Card("ivory","images/images-5.jpg","j",9);
+ cardarray[10] = new Card("ivory","images/images-6.jpg","k",10);
+ cardarray[11] = new Card("ivory","images/images-6.jpg","l",11);
+ cardarray[12] = new Card("ivory","images/images.jpg","m",12);
+ cardarray[13] = new Card("ivory","images/images.jpg","n",13);
+ cardarray[14] = new Card("ivory","images/imgres-1.jpg","o",14);
+ cardarray[15] = new Card("ivory","images/imgres-1.jpg","p",15);
+ cardarray[16] = new Card("ivory","images/imgres.jpg","q",16);
+ cardarray[17] = new Card("ivory","images/imgres.jpg","r",17); 
+
+
 //Function Load Page 
 
 //Constructor:
@@ -31,9 +37,17 @@ window.onload=function() {
 //sideTwo: color
 //sideNothing:" "
 
-
-//event listener on "Place Cards" button in HTML to trigger array referrring to Dom locations 
-//gamesquare on gameboard 
+	for (var i = 0; i < cardarray.length; i++){ 
+	document.getElementById(cardarray[i].id).addEventListener("click", function(event){ 
+    var clickedDiv = event.target;
+	var img = document.createElement("img");
+	img.setAttribute("src", cardarray[$(this).attr("data-id")].side2);
+	img.setAttribute("height", "150px");
+	img.setAttribute("width", "150px");
+	clickedDiv.appendChild(img);
+});
+}//event listener on "Place Cards" button in HTML to trigger array referrring to Dom locations 
+}//gamesquare on gameboard 
 //randomly math.random?
 
 //event listener on Start Time var start=3 
@@ -61,8 +75,3 @@ window.onload=function() {
 
 
 
-
-
-
-
-*/
