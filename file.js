@@ -30,17 +30,17 @@ window.onload=function() {
 
 
     function TurnCard(event){
-            console.log(stateMemory);
             var clickedDiv = event.target;
             var clickedCard = cardarray[(clickedDiv).getAttribute("data-id")];
             clickedDiv.style.backgroundImage = "url('" + clickedCard.side2+"')";
+            if(stateMemory !==clickedCard){
             if (stateMemory===""){
                 stateMemory=clickedCard;
             }else {
                 Match(stateMemory, clickedCard);
                 stateMemory="";     
             }
-
+}
     }
     for (var i = 0; i < cardarray.length; i++){ 
     	   document.getElementById(cardarray[i].id).addEventListener("click", function(event){
@@ -50,14 +50,14 @@ window.onload=function() {
     
     function Match(firstCard, secondCard){
             if (firstCard.side2!==secondCard.side2){
-                TurnBack(firstCard);
-                TurnBack(secondCard);
+                setTimeout(function(){
+                    TurnBack(firstCard);
+                    TurnBack(secondCard);},1000)
             }
            
     }
 
     function TurnBack(firstCard){
-        console.log(firstCard);
             var CardDiv = document.getElementById(firstCard.id);
             CardDiv.style.backgroundImage = "url('" + firstCard.side1+"')";
             
@@ -67,58 +67,12 @@ document.getElementById("startover").addEventListener("click", function(){
    for(var i=0; i<cardarray.length; i++){
         TurnBack(cardarray[i]);
    } 
+        stateMemory="";
 });
-}    
-    
+}
+  
 
-    //  Turn.prototype = {
-    // turn: function(){
-    //     var message = document.getElementById("message");
-    //     if ("Blue" === this.color){
-    //         this.color = "Green";
-    //         this.content = "O";
-    //     }
-    //     else {
-    //         this.color = "Blue";
-    //         this.content = "X";
-    //     }
-    //     message.textContent = this.content + " Goes!";
-          //event listener on "Place Cards" button in HTML to trigger array referrring to Dom locations 
-//gamesquare on gameboard 
-   
-//    Card.prototype = {
-//     turn: function(event){
-//      console.log("hi")
-//      var compare = event.target;
-//         if (this.side2==!this.side2){
-//             this.side1;
-//         }
-//         else {
-//             this.side2;
-//         }
-//      }  
-
-// }
-
-
-
-//event listener on Start Time var start=3 
-//if time=0
-//message "Sorry, you are probably great at other things" and run reset function
-//else time runs
-
-//each dom gamesquare event listener listens for click which triggers function turnOver
-//turn over changes property of card object from sideOne to sideTwo 
-
-//for loop to iterate through objects in array
-//if EachCard sideTwo [0] || EachCard sideTwo[1]!= EachCard sideTwo[2] 
-//then EachCard will go back to sideOne
-//else EachCard sideTwo[1]===sideTwo[2]
-
-//When EachCard in Array has a sideTwo == to EachCard sideTwo (when the array has been reduced to 8)
-//game over 
-
-//event listener in Reset if clicked property of card will be " ".
+ 
 
 
 
